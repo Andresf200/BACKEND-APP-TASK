@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\JsonApi\Traits\JsonApiResource;
+use App\Http\Resources\CheckListsResource;
 
 class TaskResource extends JsonResource
 {

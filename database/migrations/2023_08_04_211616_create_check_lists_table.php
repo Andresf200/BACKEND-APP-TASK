@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('check_lists', function (Blueprint $table) {
             $table->id();
             $table->string('item');
-            $table->boolean('completed');
+            $table->boolean('completed')->default(false);
             $table->unsignedBigInteger('task_id');
             $table->foreign('task_id')->references('id')->on('tasks');
             $table->timestamps();

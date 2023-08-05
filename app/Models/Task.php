@@ -17,7 +17,14 @@ class Task extends Model
     const stateProgress = 'progress';
     const stateCompleted = 'completed';
 
-    protected $fillable = ['title','description','state','date_start','date_end','user-id'];
+    protected $fillable = [
+        'title',
+        'description',
+        'state',
+        'date_start',
+        'date_end',
+        'user_id'
+    ];
 
     protected $casts = [
         'date-start' => 'datetime',
@@ -30,11 +37,11 @@ class Task extends Model
     }
 
     public function checklists(){
-        return $this->hasMany(CheckList::class);
+        return $this->hasMany(CheckList::class,'task_id','id');
     }
 
     public function files()
     {
-        return $this->hasMany(TaskFile::class);
+        return $this->hasMany(TaskFile::class,'task_id', 'id');
     }
 }

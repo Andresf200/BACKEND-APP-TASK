@@ -10,7 +10,13 @@ class TaskFile extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'file_name',
+        'file_path',
+        'task_id'
+    ];
+
     public function task(){
-        return $this->belongsTo(Task::class);
+        return $this->belongsTo(Task::class,'task_id', 'id');
     }
 }

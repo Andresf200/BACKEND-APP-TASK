@@ -61,7 +61,7 @@ trait JsonApiResource{
         if ($response->status() === 201) {
             $response->header(
                 'Location',
-                route('api.v1.'.$this->getResourceType().'.show', $this->resource)
+                route($this->getResourceType().'.show', $this->resource)
             );
         }
     }
