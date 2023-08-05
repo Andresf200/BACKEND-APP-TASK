@@ -3,10 +3,12 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\JsonApi\Traits\JsonApiResource;
 
 class TaskResource extends JsonResource
 {
-    public function toArray($request)
+    use JsonApiResource;
+    public function toJsonApi():array
     {
         return [
             'id' => $this->resource->id,
@@ -17,4 +19,12 @@ class TaskResource extends JsonResource
             'date_end' => $this->resource->date_end
         ];
     }
+
+    public function getIncludes(): array
+    {
+        return [
+            CheckListsResource::make($this->whenLoaded('checklists')),
+        ];
+    }
+
 }

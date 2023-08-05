@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\CheckList;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,5 +16,6 @@ class DatabaseSeeder extends Seeder
          ]);
 
          Task::factory()->count(30)->create();
+         CheckList::factory()->count(2)->create();
     }
 }
