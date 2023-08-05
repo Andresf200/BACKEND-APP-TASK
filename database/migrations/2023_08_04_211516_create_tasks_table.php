@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('state')->default('todo');
-            $table->date('date-start')->default(Carbon::now());
-            $table->date('date-end')->nullable();
+            $table->date('date_start')->default(Carbon::now());
+            $table->date('date_end')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->softDeletes();

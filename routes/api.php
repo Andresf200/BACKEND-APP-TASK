@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ProfileUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TasksController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileUserController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -12,6 +13,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::delete('/logout',[AuthController::class,'destroy'])->name('logout');
+
+    Route::apiResource('/tasks',TasksController::class)->names('tasks');
 
 });
 
