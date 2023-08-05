@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Http\Resources\TaskResource;
 use App\Http\Requests\TaskStoreRequest;
-use App\Models\CheckList;
+use App\Http\Requests\TaskUpdateRequest;
 use Carbon\Carbon;
 
 class TasksController extends Controller
@@ -50,6 +50,22 @@ class TasksController extends Controller
             }
         }
 
+        return TaskResource::make($task);
+
+    }
+
+    public function update(Task $task,TaskUpdateRequest $request){
+       $task->fill([
+            'title' => $request->input('data.title'),
+            'description' => $request->input('data.description'),
+            'state' => (Carbon::parse($request->input('data.date_start')) <= Carbon::now())? Task::stateProgress : Task::stateTODO,
+       ]);
+
+       if($task->isClean()){
+            return response()->json(['status' => 422,'message' => "Debe especificar al menos un valor diferente para actualizar"]);
+        }
+
+        $task->save();
         return TaskResource::make($task);
 
     }
