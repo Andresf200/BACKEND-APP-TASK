@@ -12,5 +12,9 @@ class TasksController extends Controller
         return TaskResource::collection(Task::all());
     }
 
+    public function show(Task $task){
+        return TaskResource::make($task);
+    }
+
 
 }
