@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CheckListController;
 use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\TaskFileController;
+use App\Http\Controllers\UserTaskController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -22,6 +23,8 @@ Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::get('/checklist/toggleCompleted/{id}',[CheckListController::class ,'toggleCompleted']);
 
     Route::apiResource('/taskfiles',TaskFileController::class)->only('store','destroy');
+
+    Route::get('/usertask/{user}',[UserTaskController::class,'show']);
 });
 
 Route::get('/login', [AuthController::class, 'store'])->name('login');
