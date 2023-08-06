@@ -19,6 +19,7 @@ Route::group(['middleware' => ["auth:sanctum"]], function () {
 
     Route::apiResource('/checklist',CheckListController::class)->names('check_lists')->except('index');
 
+    Route::get('/checklist/toggleCompleted/{id}',[CheckListController::class ,'toggleCompleted']);
 });
 
 Route::get('/login', [AuthController::class, 'store'])->name('login');

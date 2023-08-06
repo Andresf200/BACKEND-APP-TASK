@@ -33,7 +33,8 @@ class TasksController extends Controller
         if($request->filled('include.checklists')){
             foreach($request->input('include.checklists') as $checkListData){
                 $task->checklists()->create([
-                    'item' =>  $checkListData
+                    'item' =>  $checkListData,
+                    'completed' => false
                 ]);
             }
         }

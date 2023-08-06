@@ -16,6 +16,11 @@ class CheckList extends Model
         'task_id'
     ];
 
+    public function toggleCompleted(){
+        $this->completed = !$this->completed;
+        $this->save();
+    }
+
     public function task(){
         return  $this->belongsTo(Task::class,'task_id','id');
     }

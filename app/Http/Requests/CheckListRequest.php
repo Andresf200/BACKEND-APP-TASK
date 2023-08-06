@@ -17,8 +17,8 @@ class CheckListRequest extends FormRequest
     {
         return [
             'data.id' => [
-                Rule::requiredIf($this->route('checklist')),
-                Rule::exists('checklists', 'id'),
+                Rule::requiredIf($this->route('check_lists')),
+                Rule::exists('check_lists', 'id'),
             ],
             'data.item' => [
                 'string',
@@ -27,7 +27,7 @@ class CheckListRequest extends FormRequest
             ],
             'data.task_id' => [
                 'integer',
-                Rule::requiredIf(! $this->route('checklist')),
+                Rule::requiredIf(! $this->route('check_lists')),
                 Rule::exists('tasks', 'id'),
                 ]
         ];

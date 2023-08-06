@@ -13,9 +13,9 @@ class CheckListsResource extends JsonResource
     {
         return [
             'id' => $this->resource->id,
-            'item' => $this->resource->title,
-            'completed' => $this->resource->description,
-            'task_id' => $this->resource->state,
+            'item' => $this->resource->item,
+            'completed' => $this->resource->completed,
+            'task_id' => $this->resource->task_id,
         ];
     }
 }
