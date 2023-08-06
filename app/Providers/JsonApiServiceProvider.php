@@ -14,6 +14,7 @@ class JsonApiServiceProvider extends ServiceProvider
     {
         $this->app->singleton(
             \App\Exceptions\Handler::class,
+            \App\JsonApi\Exceptions\Handler::class
         );
     }
 
