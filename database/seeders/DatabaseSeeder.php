@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'afloriangonzales@gmail.com',
          ]);
 
-         Task::factory()->count(30)->create();
+         Task::factory()->count(2)->create();
          CheckList::factory()->count(2)->create();
     }
 }

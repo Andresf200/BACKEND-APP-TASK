@@ -17,10 +17,10 @@ class TaskStoreRequest extends FormRequest
         return [
             'data.title' => ['required','string','max:255'],
             'data.description' => ['required','string','max:255'],
-            'data.date_start' => ['required','date_format:Y-m-d H:i:s','date'],
+            'data.date_start' => ['required','date_format:Y-m-d','date'],
             'include.checklists.*' => ['string','max:255'],
             'include.files' => ['array'],
-            'include.files.*.file' => ['file', 'mimes:jpeg,png,pdf','max:2048'],
+            'include.files.*' => ['file', 'mimes:jpeg,png,pdf','max:2048'],
         ];
     }
 }

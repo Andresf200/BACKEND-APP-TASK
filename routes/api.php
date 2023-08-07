@@ -8,6 +8,7 @@ use App\Http\Controllers\CheckListController;
 use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\TaskFileController;
 use App\Http\Controllers\UserTaskController;
+use App\Http\Controllers\UserController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -25,8 +26,10 @@ Route::group(['middleware' => ["auth:sanctum"]], function () {
     Route::apiResource('/taskfiles',TaskFileController::class)->only('store','destroy');
 
     Route::get('/usertask/{user}',[UserTaskController::class,'show']);
+
+    Route::get('users', [UserController::class,'index']);
 });
 
-Route::get('/login', [AuthController::class, 'store'])->name('login');
+Route::post('/login', [AuthController::class, 'store'])->name('login');
 Route::post('/register', [ProfileUserController::class, 'store'])->name('register');
 

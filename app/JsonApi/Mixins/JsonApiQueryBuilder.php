@@ -34,7 +34,7 @@ class JsonApiQueryBuilder{
     {
         return function () {
             /** @var Builder $this */
-            $perPage = request('page.size', 15);
+            $perPage = request('page.size', 4);
 
             return $this->paginate(
                 $perPage,

@@ -12,14 +12,13 @@ class TasksController extends Controller
 {
     public function index(){
         $tasks = Task::query()
-        ->allowedIncludes(['users', 'checklists', 'files'])
+        ->allowedIncludes(['user', 'checklists', 'files'])
         ->jsonPaginate();
 
         return TaskResource::collection($tasks);
     }
 
     public function store(TaskStoreRequest $request){
-
         $task = Task::make([
             'title' => $request->input('data.title'),
             'description' => $request->input('data.description'),
@@ -60,6 +59,7 @@ class TasksController extends Controller
             'title' => $request->input('data.title'),
             'description' => $request->input('data.description'),
             'state' => (Carbon::parse($request->input('data.date_start')) <= Carbon::now())? Task::stateProgress : Task::stateTODO,
+            'date_start' => Carbon::parse($request->input('data.date_start')),
        ]);
 
        if($task->isClean()){
@@ -73,7 +73,7 @@ class TasksController extends Controller
 
     public function show($task){
         $task = Task::where('id',$task)
-        ->allowedIncludes(['users', 'checklists', 'files'])
+        ->allowedIncludes(['user', 'checklists', 'files'])
         ->firstOrFail();
 
         return TaskResource::make($task);

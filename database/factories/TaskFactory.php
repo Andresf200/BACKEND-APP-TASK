@@ -14,9 +14,9 @@ class TaskFactory extends Factory
         return [
            'title' => fake()->sentence(1),
            'description' => fake()->text(120),
-           'state' => fake()->randomElement([Task::stateTODO,Task::stateProgress,Task::stateCompleted]),
+           'state' => fake()->randomElement([Task::stateTODO,Task::stateProgress]),
            'user_id' => User::find(1),
-           'date_start' => fake()->date(now())
+           'date_start' => '2023-08-12 12:56:00'
         ];
     }
 }

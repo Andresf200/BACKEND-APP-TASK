@@ -19,7 +19,7 @@ class CheckListController extends Controller
 
     public function store(CheckListRequest $request){
 
-        $task = Task::firstOrFail('id', $request->input('data.task_id'));
+        $task = Task::find($request->input('data.task_id'));
 
         $checklist = CheckList::create([
             'item' => $request->input('data.item'),

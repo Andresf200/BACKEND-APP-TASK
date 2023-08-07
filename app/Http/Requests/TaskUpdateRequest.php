@@ -17,7 +17,7 @@ class TaskUpdateRequest extends FormRequest
         return [
             'data.title' => ['string','max:255'],
             'data.description' => ['string','max:255'],
-            'data.date_start' => ['date_format:Y-m-d H:i:s','date'],
+            'data.date_start' => ['date_format:Y-m-d','date'],
         ];
     }
 }

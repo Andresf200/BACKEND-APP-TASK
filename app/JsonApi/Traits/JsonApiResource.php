@@ -33,10 +33,9 @@ trait JsonApiResource{
     public function toArray($request): array
     {
         if ($request->filled('include')) {
-            foreach ($this->getIncludes() as $include) {
+            foreach ($this->getIncludes() as $index => $include) {
                 if ($include->resource instanceof Collection) {
-                    $include->resource->each(fn ($r) => $this->with['included'][] = $r);
-
+                    $include->resource->each(fn ($r) => $this->with['included'][$index][] = $r);
                     continue;
                 }
 

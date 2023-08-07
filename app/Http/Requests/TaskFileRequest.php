@@ -21,7 +21,7 @@ class TaskFileRequest extends FormRequest
                 Rule::exists('tasks', 'id'),
             ],
             'data.files' => ['array'],
-            'data.files.*.file' => ['file', 'mimes:jpeg,png,pdf','max:2048'],
+            'data.files.*' => ['file', 'mimes:jpeg,png,pdf','max:2048'],
         ];
     }
 }
